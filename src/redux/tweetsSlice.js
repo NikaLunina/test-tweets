@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { fetchGetCard  , fetchUpdateCard} from './Options';
+import { fetchGetCard  , fetchUpdateCard} from './operations';
 
 const TweetsSlice = createSlice({
   name: 'card',
