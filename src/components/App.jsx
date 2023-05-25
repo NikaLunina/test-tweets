@@ -1,15 +1,15 @@
 import { Route, Routes } from 'react-router-dom';
-import { lazy } from 'react';
-i
+import { lazy, Suspense } from 'react';
 
-const Home = lazy(() => import('../pages/Home'));
+
+const Home = lazy(() => import('../pages/Home'))
 const Tweets = lazy(() => import('../pages/Tweets'));
-const NotFound = lazy(() => import('../components/NotFound/NotFound'));
+const NotFound = lazy(() => import('../components/NotFound'));
 
 export const App = () => {
   return (
-    <Container>
-        <Header>
+    <container>
+        <header>
           <nav>
             <ul>
               <li>
@@ -20,7 +20,7 @@ export const App = () => {
               </li>
             </ul>
           </nav>
-        </Header>
+        </header>
         <Suspense fallback={<h1>Loading...</h1>}>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -28,6 +28,6 @@ export const App = () => {
         <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
-      </Container>
+      </container>
   );
 };
