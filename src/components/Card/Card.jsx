@@ -42,7 +42,7 @@ export default function Card() {
         {card && card.length > 0 ? (
           card.map(card => <CardItem key={card.id} card={card} />)
         ) : (
-          <p>There is nothing here...</p>
+          <p>Oop...something went wrong.</p>
         )}
       </ul>
       {showLoadMoreBtn && (
