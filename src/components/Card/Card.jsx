@@ -1,6 +1,7 @@
 import CardItem from 'components/CardItem/CardItem';
 import { fetchDataCard } from 'services/Api';
 import React, { useState, useEffect } from 'react';
+import css from './Card.module.css'
 
 
 export default function Card() {
@@ -36,8 +37,8 @@ export default function Card() {
   };
 
   return (
-    <div >
-      <ul >
+    <div className={css.container}>
+      <ul className={css.tweetsList}>
         {card && card.length > 0 ? (
           card.map(card => <CardItem key={card.id} card={card} />)
         ) : (
@@ -45,7 +46,7 @@ export default function Card() {
         )}
       </ul>
       {showLoadMoreBtn && (
-        <button type="button" onClick={handleLoadMore} >
+        <button type="button" onClick={handleLoadMore} className={css.loadMoreBtn} >
           Load more
         </button>
       )}
