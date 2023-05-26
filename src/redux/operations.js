@@ -1,5 +1,5 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { fetchDataCard, updateDataCard } from '../services/Api';
+import { fetchDataCard, updateFetchCard } from '../services/Api';
 
 
 export const fetchGetCard = createAsyncThunk(
@@ -18,7 +18,7 @@ export const fetchUpdateCard = createAsyncThunk(
   'card/fetchCardUpdate',
   async (data, thunkAPI) => {
     try {
-      const response = await updateDataCard(data);
+      const response = await updateFetchCard(data);
       return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

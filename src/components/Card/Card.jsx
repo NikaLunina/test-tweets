@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 
 
 export default function Card() {
-  const [loadMoreBtn, setLoadMoreBtn] = useState(false);
+   const [showLoadMoreBtn, setShowLoadMoreBtn] = useState(false);
   const [card, setCard] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
   const [followCheck] = useState('');
@@ -13,11 +13,11 @@ export default function Card() {
   useEffect(() => {
     const getUsers = async ({ page, limit, selected }) => {
       try {
-        return await fetchDataCard (page, limit, selected).then(data => {
+        return await fetchDataCard(page, limit, selected).then(data => {
           if (data && data.length < limit) {
-            setLoadMoreBtn(false);
+            setShowLoadMoreBtn(false);
           } else {
-            setLoadMoreBtn(true);
+            setShowLoadMoreBtn(true);
           }
 
           setCard([...card, ...data]);
@@ -28,7 +28,7 @@ export default function Card() {
     };
 
     getUsers({ page: pageNumber, limit: limit, selected: followCheck });
-
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [pageNumber, followCheck]);
 
   const handleLoadMore = () => {
@@ -36,7 +36,7 @@ export default function Card() {
   };
 
   return (
-    <div>
+    <div >
       <ul >
         {card && card.length > 0 ? (
           card.map(card => <CardItem key={card.id} card={card} />)
@@ -44,7 +44,7 @@ export default function Card() {
           <p>There is nothing here...</p>
         )}
       </ul>
-      {loadMoreBtn && (
+      {showLoadMoreBtn && (
         <button type="button" onClick={handleLoadMore} >
           Load more
         </button>
